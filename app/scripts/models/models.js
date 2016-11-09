@@ -70,13 +70,13 @@ var Recipe = ParseModel.extend({
   defaults: {
     ingredients: new IngredientCollection()
   },
-  urlRoot: 'https://rene-recipe-app.herokuapp.com/Recipes',
+  urlRoot: 'https://rene-recipe-app.herokuapp.com/classes/Recipes',
   save: function(key, val, options){
     this.set('ingredients', this.get('ingredients').toJSON());
 
     return ParseModel.prototype.save.apply(this, arguments);
   },
-  parse: function(dats){
+  parse: function(data){
     data.ingredients = new IngredientCollection(data.ingredients);
     return data
   }
@@ -84,7 +84,7 @@ var Recipe = ParseModel.extend({
 
 var RecipeCollection = ParseCollection.extend({
   model: Recipe,
-  url: 'https://rene-recipe-app.herokuapp.com/Recipes'
+  url: 'https://rene-recipe-app.herokuapp.com/classes/Recipes'
 });
 
 module.exports = {
