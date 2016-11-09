@@ -1,4 +1,36 @@
+var $ = require('jquery');
 var Backbone = require('backbone');
+
+var User = Backbone.Model.extend({
+  defaults: {
+    name: '',
+    username: '',
+    password: ''
+  },
+  idAttribute: 'objectId',
+  urlRoot: 'https://rene-recipe-app.herokuapp.com/',
+  parse: function(data){
+    return data.results;
+  },
+  login: function(username, password){
+    var url = this.urlRoot + 'login?username=' + username + '&password=' + encodeURI(password);
+
+    $.ajax(url).then(function(response){
+      localStorage.setItem('sessionToken', response.sessionToken);
+      localStorage.setItem('userSession', JSON.stringify(response));
+      localStorage.setItem('userID', response.objectId);
+      localStorage.setItem('name', response.name);
+    });
+  },
+  signUp: function(username, password, name){
+    var self = this;
+    var url = this.urlRoot + 'users';
+
+    $.post(url, {'username': username, 'password': password, 'name': name}).then(function(){
+      self.login(username, password);
+    });
+  }
+});
 
 var ParseModel = Backbone.Model.extend({
   idAttribute: 'objectId',
@@ -7,6 +39,9 @@ var ParseModel = Backbone.Model.extend({
     delete this.ttributes.updatedAt;
 
     return Backbone.Model.prototype.save.apply(this, arguments);
+  },
+  parse: function(data){
+    return data.results;
   }
 });
 
@@ -54,5 +89,6 @@ module.exports = {
   Ingredient: Ingredient,
   IngredientCollection: IngredientCollection,
   Recipe: Recipe,
-  RecipeCollection: RecipeCollection
+  RecipeCollection: RecipeCollection,
+  User: User
 };

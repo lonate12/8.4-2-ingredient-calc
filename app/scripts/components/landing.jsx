@@ -1,9 +1,15 @@
 var React = require('react');
+var LoginContainer = require('./login.jsx');
 
 var LandingPageView = React.createClass({
   render: function(){
     return(
-      <h1>Test</h1>
+      <div className="container-fluid opening">
+        <div className="row">
+          <h1>Welcome to BatchMaker!</h1>
+          <LoginContainer />
+        </div>
+      </div>
     );
   }
 });
