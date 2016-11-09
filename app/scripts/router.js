@@ -23,7 +23,7 @@ var AppRouter = Backbone.Router.extend({
   },
   sessionTokenCheck: function(){
     if(!localStorage.getItem('sessionToken')){
-      this.navigate('/login/', {trigger: true});
+      this.navigate('', {trigger: true});
     }
   },
   index: function(){

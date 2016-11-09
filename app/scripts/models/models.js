@@ -20,6 +20,8 @@ var User = Backbone.Model.extend({
       localStorage.setItem('userSession', JSON.stringify(response));
       localStorage.setItem('userID', response.objectId);
       localStorage.setItem('name', response.name);
+
+      Backbone.history.navigate('recipes/', {trigger: true});
     });
   },
   signUp: function(username, password, name){

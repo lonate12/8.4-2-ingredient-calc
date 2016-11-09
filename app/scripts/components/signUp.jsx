@@ -25,8 +25,6 @@ var SignUpContainer = React.createClass({
     e.preventDefault();
 
     this.state.user.signUp(this.state.username, this.state.password, this.state.name);
-
-    Backbone.history.navigate('recipes/', {trigger: true});
   },
   render: function(){
     return(
