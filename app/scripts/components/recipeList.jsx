@@ -25,7 +25,7 @@ var RecipeListContainer = React.createClass({
             <img src={recipe.get('image_url')} alt={recipe.get('recipe_name')} />
             <div className="caption">
               <h3>{recipe.get('recipe_name')}</h3>
-              <p><a href={'#/recipes/' + recipe.get('objectId')} className="btn btn-primary" role="button">Check out recipe</a></p>
+              <p><a href={'#/recipes/' + recipe.get('objectId')+'/'} className="btn btn-primary" role="button">Check out recipe</a></p>
             </div>
           </div>
         </div>
