@@ -1,11 +1,46 @@
+var Backbone = require('backbone');
 var React = require('react');
 var Recipe = require('../models/models.js').Recipe;
 var Template = require('./template.jsx');
 
 var IngredientForm = React.createClass({
+  getInitialState: function(){
+    return this.props.ingredient.toJSON()
+  },
+  componentWillReceiveProps: function(nextProps){
+    this.setState(nextProps.ingredient.toJSON());
+  },
+  handleInputChange: function(e){
+    e.preventDefault();
+    var target = e.target;
+
+    var newState = {};
+    newState[target.name] = target.value;
+
+    this.props.ingredient.set(target.name, target.value);
+    this.setState(newState);
+  },
+  removeIngredient: function(e){
+    e.preventDefault();
+    this.props.removeIngredient(this.props.ingredient);
+  },
   render: function(){
     return(
-      <h1>Ingredient Form</h1>
+      <div>
+        <div className="form-group">
+          <label className="sr-only" htmlFor="quantity">Amount</label>
+          <input onChange={this.handleInputChange} type="text" className="form-control" name="quantity" id="quantity" placeholder="Quantity" value={this.state.quantity} />
+        </div>
+        <div className="form-group">
+          <label className="sr-only" htmlFor="units">Units</label>
+          <input onChange={this.handleInputChange} type="text" className="form-control" name="units" id="units" placeholder="Units" value={this.state.units} />
+        </div>
+        <div className="form-group">
+          <label className="sr-only" htmlFor="name">Name</label>
+          <input onChange={this.handleInputChange} type="text" className="form-control" name="name" id="name" placeholder="Ingredient Name" value={this.state.name} />
+        </div>
+        <button onClick={this.removeIngredient} type="button" className="btn btn-danger">Remove</button>
+      </div>
     );
   }
 });
@@ -18,6 +53,7 @@ var RecipeForm = React.createClass({
     this.setState(newProps.recipe.toJSON());
   },
   handleInputChange: function(e){
+    e.preventDefault();
     var target = e.target, newState = {};
 
     newState[target.name] = target.value;
@@ -30,16 +66,16 @@ var RecipeForm = React.createClass({
     this.props.addRecipe(this.state);
   },
   render: function(){
-    var recipe = this.props.recipe
+    var recipe = this.props.recipe, self = this;
 
     var ingredientFormset = recipe.get('ingredients').map(function(ingredient){
       return(
-        <IngredientForm key={ingredient.cid} ingredient={ingredient} />
+        <IngredientForm key={ingredient.cid} ingredient={ingredient} removeIngredient={self.props.removeIngredient} />
       );
     });
 
     return(
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <div className="form-group">
           <label htmlFor="recipe_name">Recipe Name</label>
           <input onChange={this.handleInputChange} type="text" className="form-control" name="recipe_name" id="recipe_name" placeholder="Recipe Name" value={this.state.recipe_name}/>
@@ -70,11 +106,13 @@ var RecipeForm = React.createClass({
           <input onChange={this.handleInputChange} type="number" className="form-control" id="cook_temp" name="cook_temp" placeholder="Cook Temp in Farenheit (i.e. 350)" value={this.state.cook_temp}/>
         </div>
 
-        <h3>Ingredients <button type="butotn" onClick={this.props.addIngredient} className="btn btn-success">Add Ingredient</button></h3>
+        <h3>Ingredients <button type="button" onClick={this.props.addIngredient} className="btn btn-success">Add Ingredient</button></h3>
 
         <div className="form-inline">
           {ingredientFormset}
         </div>
+
+        <button type="submit" className="btn btn-primary">Save Changes</button>
       </form>
     );
   }
@@ -115,16 +153,27 @@ var RecipeFormContainer = React.createClass({
     var recipe = this.state.recipe;
 
     recipe.set(newRecipe);
+    recipe.set({
+      adjusted_quantity: recipe.get('quantity'),
+      creator: localStorage.getItem('name'),
+      owner: {'__type':'Pointer', 'className': '_User', 'objectId': localStorage.getItem('userID')}
+    })
+
     recipe.save().then(function(){
       Backbone.history.navigate('recipes/' + recipe.get('objectId') + '/', {trigger: true});
     });
+  },
+  removeIngredient: function(ingredientToRemove){
+    var ingredients = this.state.recipe.get('ingredients');
+    ingredients.remove(ingredientToRemove);
+    this.setState({recipe: this.state.recipe})
   },
   render: function(){
     return(
       <Template>
         <div className="row">
           <h1>{this.props.id ? 'Edit' : 'Add'} Recipe</h1>
-          <RecipeForm recipe={this.state.recipe} addRecipe={this.addRecipe} addIngredient={this.addIngredient} />
+          <RecipeForm recipe={this.state.recipe} removeIngredient={this.removeIngredient} addRecipe={this.addRecipe} addIngredient={this.addIngredient} />
         </div>
       </Template>
     );

@@ -38,7 +38,7 @@ var ParseModel = Backbone.Model.extend({
   idAttribute: 'objectId',
   save: function(key, val, options){
     delete this.attributes.createdAt;
-    delete this.ttributes.updatedAt;
+    delete this.attributes.updatedAt;
 
     return Backbone.Model.prototype.save.apply(this, arguments);
   },
