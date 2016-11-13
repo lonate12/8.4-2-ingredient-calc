@@ -5758,11 +5758,95 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+@font-face {
+  src: url("../fonts/Champagne&Limousines.ttf");
+  font-family: "assassins"; }
+@font-face {
+  src: url("../fonts/CookieDough.otf");
+  font-family: "cookie"; }
+@font-face {
+  src: url("../fonts/OptimusPrinceps.ttf");
+  font-family: 'optimus'; }
 *,
 *::before,
 *::after {
   box-sizing: border-box; }
 
+body {
+  font-family: 'optimus';
+  background-color: #EBCC79; }
+  body a {
+    color: white;
+    text-decoration: none; }
+  body a:hover {
+    color: #EBCC79;
+    text-decoration: none; }
+
 img {
   max-width: 100%; }
+
+.main {
+  background-color: #42241A; }
+
+.brownbg {
+  background-color: #42241A;
+  padding: 20px; }
+  .brownbg .opening-title {
+    text-align: center;
+    font-family: 'assassins';
+    font-size: 56px;
+    padding: 20px;
+    margin: 0;
+    background-color: #42241A;
+    color: white;
+    font-weight: 600; }
+  .brownbg .div-logo {
+    background-image: url("../images/bakeryLogo.jpg");
+    background-size: cover;
+    background-position: center center;
+    border-radius: 4px;
+    height: 100px;
+    width: 160px;
+    margin: 0 auto; }
+
+.opposite:hover {
+  color: #42241A; }
+
+.thumbnail {
+  height: 415px; }
+  .thumbnail .thumbnail-image {
+    overflow: hidden;
+    height: 288px; }
+
+.top-header {
+  background-color: #42241A; }
+  .top-header .logo {
+    display: inline-block;
+    height: 60px;
+    width: 80px;
+    background-image: url("../images/bakeryLogo.jpg");
+    background-size: 120%;
+    background-position: center center;
+    margin: 10px 10px;
+    border-radius: 3px; }
+  .top-header .logo-link {
+    display: block;
+    height: 100%;
+    width: 100%; }
+  .top-header span {
+    font-size: 25px;
+    padding: 10px; }
+
+.footer {
+  height: 30px; }
+  .footer .logo {
+    display: inline-block;
+    height: 30px;
+    width: 40px;
+    background-image: url("../images/bakeryLogo.jpg");
+    background-size: 120%;
+    background-position: center center;
+    margin: 10px 10px;
+    border-radius: 3px; }
+
 /*# sourceMappingURL=app.css.map */
