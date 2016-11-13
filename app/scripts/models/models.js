@@ -79,6 +79,15 @@ var Recipe = ParseModel.extend({
   parse: function(data){
     data.ingredients = new IngredientCollection(data.ingredients);
     return data
+  },
+  deleteRecipe: function(recipeId){
+    $.ajax({
+      url:'https://rene-recipe-app.herokuapp.com/classes/Recipes/'+recipeId,
+      type: 'DELETE',
+      success: function(result){
+        console.log(result);
+      }
+    });
   }
 });
 

@@ -1,3 +1,4 @@
+var Backbone = require('backbone');
 var React = require('react');
 var Recipe = require('../models/models.js').Recipe;
 var Template = require('./template.jsx');
@@ -17,6 +18,13 @@ var RecipeDetailContainer = React.createClass({
       self.setState({recipe: recipe});
     });
   },
+  handleDelete: function(){
+    var recipe = this.state.recipe;
+
+    recipe.deleteRecipe(recipe.get('objectId'));
+    alert('Recipe deleted');
+    Backbone.history.navigate('#/recipes/', {trigger: true});
+  },
   render: function(){
     var recipe = this.state.recipe;
     return(
@@ -27,6 +35,7 @@ var RecipeDetailContainer = React.createClass({
           <a href={'#/recipes/'+recipe.get('objectId')+'/edit/'} className="button-link">Edit</a>
         </div>
         <AdjustRecipeContainer recipe={this.state.recipe}/>
+        <button type="button" className="btn btn-danger pull-right" onClick={this.handleDelete}>Delete This Recipe</button>
       </Template>
     );
   }
