@@ -23,7 +23,9 @@ var Template = React.createClass({
       </div>
       <div className="container-fluid">
         <footer className="row footer">
-          <a href="#"><div className="logo"></div></a>
+          <div className="logo"><a href="#" className="logo-link"></a></div>
+          <span><a className="bottom-nav" href="#/recipes/">Recipes</a></span>
+          <span><a className="bottom-nav" href="#/recipes/add/">Add Recipe</a></span>
         </footer>
       </div>
     </div>

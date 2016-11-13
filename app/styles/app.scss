@@ -114,6 +114,7 @@ img {
 
 .footer{
   height: 30px;
+
   .logo{
     display: inline-block;
     height: 30px;
@@ -123,5 +124,10 @@ img {
     background-position: center center;
     margin: 10px 10px;
     border-radius: 3px;
+  }
+
+  .bottom-nav{
+    margin: 0 10px;
+    color: #42241A;
   }
 }
