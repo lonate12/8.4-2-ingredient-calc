@@ -6,8 +6,11 @@ var LandingPageView = React.createClass({
     return(
       <div className="container-fluid opening">
         <div className="row">
-          <h1>Welcome to BatchMaker!</h1>
-          <span><a href="#/recipes/">Check out some recipes!</a></span>
+          <div className="brownbg">
+            <h1 className="opening-title">Welcome to BatchMaker</h1>
+            <div className="div-logo"></div>
+          </div>
+          <span><a className="opposite" href="#/recipes/">Check out some recipes!</a></span>
           <LoginContainer />
         </div>
       </div>

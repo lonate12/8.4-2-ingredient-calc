@@ -12,18 +12,18 @@ var Template = React.createClass({
     return(
     <div>
       <div className="container-fluid">
-        <header className="col-md-12">
-          <span>Logo Here</span>
+        <header className="top-header row">
+          <div className="logo"><a href="#" className="logo-link"></a></div>
           <span><a href="#/recipes/">Recipes</a></span>
-          <span className="pull-right"><a onClick={this.signOut} href="#">Sign Out</a></span>
+          <span><a onClick={this.signOut} href="#">Sign Out</a></span>
         </header>
       </div>
-      <div className="container">
+      <div className="container-fluid main">
         {this.props.children}
       </div>
       <div className="container-fluid">
-        <footer className="col-md-12">
-          <span>Logo Here</span>
+        <footer className="row footer">
+          <a href="#"><div className="logo"></div></a>
         </footer>
       </div>
     </div>

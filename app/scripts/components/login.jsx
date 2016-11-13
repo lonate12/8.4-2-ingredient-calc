@@ -42,7 +42,7 @@ var LoginContainer = React.createClass({
           </div>
           <button type="submit" className="btn btn-success">Login</button>
         </form>
-        <p>Don't have an account? <a href="#/sign-up/">Sign up for free!</a></p>
+        <p>Don't have an account? <a href="#/sign-up/" className="opposite">Sign up for free!</a></p>
       </div>
     );
   }
