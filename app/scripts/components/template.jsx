@@ -1,6 +1,13 @@
+var Backbone = require('backbone');
 var React = require('react');
 
+
 var Template = React.createClass({
+  signOut: function(e){
+    e.preventDefault();
+    localStorage.clear();
+    Backbone.history.navigate('', {trigger: true});
+  },
   render: function(){
     return(
     <div>
@@ -8,7 +15,7 @@ var Template = React.createClass({
         <header className="col-md-12">
           <span>Logo Here</span>
           <span><a href="#/recipes/">Recipes</a></span>
-          <span className="push-right">Sign Out</span>
+          <span className="pull-right"><a onClick={this.signOut} href="#">Sign Out</a></span>
         </header>
       </div>
       <div className="container">
