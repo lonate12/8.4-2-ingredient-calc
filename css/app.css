@@ -5774,7 +5774,8 @@ button.close {
 
 body {
   font-family: 'optimus';
-  background-color: #EBCC79; }
+  background-color: #EBCC79;
+  color: #EBCC79; }
   body a {
     color: white;
     text-decoration: none; }
@@ -5798,7 +5799,6 @@ img {
     padding: 20px;
     margin: 0;
     background-color: #42241A;
-    color: white;
     font-weight: 600; }
   .brownbg .div-logo {
     background-image: url("../images/bakeryLogo.jpg");
@@ -5808,6 +5808,9 @@ img {
     height: 100px;
     width: 160px;
     margin: 0 auto; }
+
+.login-dark {
+  color: #42241A; }
 
 .opposite:hover {
   color: #42241A; }
@@ -5837,6 +5840,26 @@ img {
     font-size: 25px;
     padding: 10px; }
 
+.recipe-name {
+  color: #EBCC79;
+  text-align: center;
+  position: relative; }
+  .recipe-name .detail-image {
+    border-radius: 70px;
+    margin-bottom: 10px; }
+  .recipe-name .button-link {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #42241A;
+    font-size: 20px; }
+
+.ingredient-header {
+  color: #EBCC79; }
+
+.recipe-delete {
+  margin-bottom: 10px; }
+
 .footer {
   height: 30px; }
   .footer .logo {
@@ -5848,5 +5871,8 @@ img {
     background-position: center center;
     margin: 10px 10px;
     border-radius: 3px; }
+  .footer .bottom-nav {
+    margin: 0 10px;
+    color: #42241A; }
 
 /*# sourceMappingURL=app.css.map */
