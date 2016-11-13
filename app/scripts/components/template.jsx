@@ -14,7 +14,7 @@ var Template = React.createClass({
       <div className="container-fluid">
         <header className="top-header row">
           <div className="logo"><a href="#" className="logo-link"></a></div>
-          <span><a href="#/recipes/">Recipes</a></span>
+          <span><a href="#/recipes/">My Recipes</a></span>
           <span><a href="#/recipes/add/">Add Recipe</a></span>
           <span><a onClick={this.signOut} href="#">Sign Out</a></span>
         </header>
