@@ -75,14 +75,14 @@ var RecipeForm = React.createClass({
     });
 
     return(
-      <form onSubmit={this.handleSubmit}>
+      <form className="col-sm-10 col-sm-offset-1" onSubmit={this.handleSubmit}>
         <div className="form-group">
           <label htmlFor="recipe_name">Recipe Name</label>
           <input onChange={this.handleInputChange} type="text" className="form-control" name="recipe_name" id="recipe_name" placeholder="Recipe Name" value={this.state.recipe_name}/>
         </div>
         <div className="form-group">
           <label htmlFor="quantity">Recipe Serving Size</label>
-          <input onChange={this.handleInputChange} type="text" className="form-control" name="quantity" id="quantity" placeholder="Recipe Serving Size" value={this.state.quantity}/>
+          <input onChange={this.handleInputChange} type="number" className="form-control" name="quantity" id="quantity" placeholder="Recipe Serving Size (number only)" value={this.state.quantity}/>
         </div>
         <div className="form-group">
           <label htmlFor="servings_unit">Recipe Servings Unit</label>
@@ -151,10 +151,16 @@ var RecipeFormContainer = React.createClass({
   },
   addRecipe: function(newRecipe){
     var recipe = this.state.recipe;
+    newRecipe.quantity = parseInt(newRecipe.quantity);
+    newRecipe.adjusted_quantity = parseInt(newRecipe.quantity);
+    newRecipe.cook_time = parseInt(newRecipe.cook_time);
+    newRecipe.prep_time = parseInt(newRecipe.prep_time);
+    newRecipe.cook_temp = parseInt(newRecipe.cook_temp);
+
+    console.log(newRecipe);
 
     recipe.set(newRecipe);
     recipe.set({
-      adjusted_quantity: recipe.get('quantity'),
       creator: localStorage.getItem('name'),
       owner: {'__type':'Pointer', 'className': '_User', 'objectId': localStorage.getItem('userID')}
     })

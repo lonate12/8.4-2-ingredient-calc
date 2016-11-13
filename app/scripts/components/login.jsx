@@ -30,19 +30,19 @@ var LoginContainer = React.createClass({
     console.log(this.state);
     return(
       <div className="col-md-6 col-md-offset-3">
-        <h2>Login</h2>
+        <h2 className="login-dark">Login</h2>
         <form onSubmit={this.login}>
           <div className="form-group">
-            <label htmlFor="username">Email address</label>
+            <label className="login-dark" htmlFor="username">Email address</label>
             <input onChange={this.handleInputChange} type="text" className="form-control" id="username" placeholder="Email" />
           </div>
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label className="login-dark" htmlFor="password">Password</label>
             <input onChange={this.handleInputChange} type="password" className="form-control" id="password" placeholder="Password" />
           </div>
           <button type="submit" className="btn btn-success">Login</button>
         </form>
-        <p>Don't have an account? <a href="#/sign-up/" className="opposite">Sign up for free!</a></p>
+        <p className="login-dark">Don't have an account? <a href="#/sign-up/" className="opposite">Sign up for free!</a></p>
       </div>
     );
   }

@@ -29,13 +29,13 @@ var RecipeDetailContainer = React.createClass({
     var recipe = this.state.recipe;
     return(
       <Template>
-        <div className=" recipe-name row">
-          <h1>{recipe.get('recipe_name')}</h1>
-          <img className="col-md-6 col-md-offset-3" src={recipe.get('image_url')} alt={recipe.get('recipe_name')}/>
+        <div className="recipe-name row">
+          <h1 className="recipe-header-name">{recipe.get('recipe_name')}</h1>
+          <img className="detail-image col-md-6 col-md-offset-3" src={recipe.get('image_url')} alt={recipe.get('recipe_name')}/>
           <a href={'#/recipes/'+recipe.get('objectId')+'/edit/'} className="button-link">Edit</a>
         </div>
         <AdjustRecipeContainer recipe={this.state.recipe}/>
-        <button type="button" className="btn btn-danger pull-right" onClick={this.handleDelete}>Delete This Recipe</button>
+        <button type="button" className="recipe-delete btn btn-danger pull-right" onClick={this.handleDelete}>Delete This Recipe</button>
       </Template>
     );
   }

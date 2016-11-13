@@ -28,6 +28,7 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 body{
   font-family: 'optimus';
   background-color: #EBCC79;
+    color: #EBCC79;
   a{
     color: white;
     text-decoration: none;
@@ -57,7 +58,6 @@ img {
     padding: 20px;
     margin: 0;
     background-color: #42241A;
-    color: white;
     font-weight: 600;
   }
 
@@ -70,6 +70,10 @@ img {
     width: 160px;
     margin: 0 auto;
   }
+}
+
+.login-dark{
+  color: #42241A;
 }
 
 .opposite:hover{
@@ -110,6 +114,33 @@ img {
     font-size: 25px;
     padding: 10px;
   }
+}
+
+.recipe-name{
+  color: #EBCC79;
+  text-align: center;
+  position: relative;
+
+  .detail-image{
+    border-radius: 70px;
+    margin-bottom: 10px;
+  }
+
+  .button-link{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #42241A;
+    font-size: 20px;
+  }
+}
+
+.ingredient-header{
+  color: #EBCC79;
+}
+
+.recipe-delete{
+  margin-bottom: 10px;
 }
 
 .footer{

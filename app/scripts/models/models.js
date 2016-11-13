@@ -1,5 +1,6 @@
 var $ = require('jquery');
 var Backbone = require('backbone');
+var setupParse = require('../parseUtilities.js').setupParse;
 
 var User = Backbone.Model.extend({
   defaults: {
@@ -20,6 +21,8 @@ var User = Backbone.Model.extend({
       localStorage.setItem('userSession', JSON.stringify(response));
       localStorage.setItem('userID', response.objectId);
       localStorage.setItem('name', response.name);
+
+      setupParse('recipe_calc', 'france', response.sessionToken);
 
       Backbone.history.navigate('recipes/', {trigger: true});
     });

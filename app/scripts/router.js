@@ -32,6 +32,10 @@ var AppRouter = Backbone.Router.extend({
       React.createElement(LandingPageView),
       document.getElementById('app')
     );
+
+    if(localStorage.getItem('sessionToken')){
+      this.navigate('recipes/', {trigger:true});
+    }
   },
   login: function(){
     ReactDOM.render(
